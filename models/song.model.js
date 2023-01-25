@@ -26,7 +26,7 @@ const Song = sequelize.define("songs", {
     type: DataTypes.STRING,
     allowNull: true,
   },
-  imgaeUrl: {
+  imageUrl: {
     type: DataTypes.STRING,
     allowNull: true,
   },
