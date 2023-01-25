@@ -1,4 +1,4 @@
-import sequelize from "../routes/sequelize";
+import sequelize from "./sequelize.js";
 import { DataTypes } from "sequelize";
 
 const Song = sequelize.define("songs", {
@@ -23,6 +23,10 @@ const Song = sequelize.define("songs", {
     referencesKey: "id",
   },
   link: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
+  imgaeUrl: {
     type: DataTypes.STRING,
     allowNull: true,
   },

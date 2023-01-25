@@ -7,15 +7,15 @@ router.get("/", (req, res) => {
   res.render("pages/login", { title: "Home Page", message: "" });
 });
 
-router.get("/index", (req, res) => {
-  User.findAll()
-    .then((users) => {
-      res.render("pages/index", { users: users, title: "Home Page" });
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
+// router.get("/index", (req, res) => {
+//   User.findAll()
+//     .then((users) => {
+//       res.render("pages/index", { users: users, title: "Home Page" });
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+// });
 
 router.get("/login", (req, res) => {
   res.render("pages/login", { title: "Login", message: "" });

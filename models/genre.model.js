@@ -1,4 +1,4 @@
-import sequelize from "../routes/sequelize";
+import sequelize from "./sequelize";
 import { DataTypes } from "sequelize";
 
 const Genre = sequelize.define("genres", {

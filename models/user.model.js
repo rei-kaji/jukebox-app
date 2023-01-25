@@ -1,14 +1,5 @@
-import sequelize from "../routes/sequelize.js";
+import sequelize from "./sequelize.js";
 import { DataTypes } from "sequelize";
-
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log("Connection has ben established successfully");
-  })
-  .catch((err) => {
-    console.error("Unable to connect to the database: ", err);
-  });
 
 const User = sequelize.define("users", {
   id: {
