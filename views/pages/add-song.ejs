@@ -1,0 +1,96 @@
+<%- include('../partials/jukebox-header') %>
+
+<div class="container my-4">
+  <form action="/add-song" method="POST">
+    <div class="mb-3">
+      <label for="InputTitle" class="form-label">Title</label>
+      <input
+        id="InputTitle"
+        type="text"
+        class="form-control"
+        name="title"
+        placeholder="Title"
+        aria-label="Title"
+        aria-describedby="basic-addon1"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="InputArtist" class="form-label">Artist</label>
+      <input
+        id="InputArtist"
+        type="text"
+        class="form-control"
+        name="artist"
+        placeholder="Artist"
+        aria-label="Artist"
+        aria-describedby="basic-addon1"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="InputLink" class="form-label">Youtube URL</label>
+      <input
+        id="InputLink"
+        type="text"
+        class="form-control"
+        name="youtubeUrl"
+        placeholder="Youtube URL"
+        aria-label="Youtube URL"
+        aria-describedby="basic-addon1"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="InputImageUrl" class="form-label">ImageUrl Link</label>
+      <input
+        id="InputImageUrl"
+        type="text"
+        class="form-control"
+        name="imageUrl"
+        placeholder="ImageUrl Link"
+        aria-label="ImageUrl Link"
+        aria-describedby="basic-addon1"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="InputGenre" class="form-label">Genre</label>
+      <select
+        id="InputGenre"
+        class="form-select"
+        aria-label="Default select"
+        name="genre"
+      >
+        <option value="Pop" selected>Pop</option>
+        <option value="Hip hop">Hip hop</option>
+        <option value="Classic">Classic</option>
+        <option value="Fork">Fork</option>
+        <option value="Rock">Rock</option>
+        <option value="Country">Country</option>
+        <option value="Sound Track">Sound Track</option>
+        <option value="Heavy metal">Heavy metal</option>
+        <option value="Jazz">Jazz</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="InputRecommendationPoint" class="form-label"
+        >Recommendation Point</label
+      >
+      <textarea
+        class="form-control"
+        id="InputRecommendationPoint"
+        rows="3"
+        name="recommendationPoint"
+        placeholder="RecommendationPoint"
+        required
+      ></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+  <% if(err){ %>
+  <p class="err"><%= err %></p>
+  <% } %>
+</div>

@@ -1,14 +1,14 @@
-import sequelize from "./sequelize";
+import sequelize from "./sequelize.js";
 import { DataTypes } from "sequelize";
 
-const Genre = sequelize.define("genres", {
+const Artist = sequelize.define("artists", {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     allowNull: false,
     autoIncrement: true,
   },
-  genre: {
+  name: {
     type: DataTypes.STRING,
     allowNull: false,
   },
@@ -18,10 +18,10 @@ sequelize
   .sync()
   .then(() => {
     // sync() creates table if it doesn't exist
-    console.log("Genre table created successfully");
+    console.log("Artist table created successfully");
   })
   .catch((err) => {
     console.log("Unable to create table: ", err);
   });
 
-export default Genre;
+export default Artist;

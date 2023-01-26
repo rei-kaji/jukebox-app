@@ -1,7 +1,14 @@
 import express from "express";
 import User from "../models/user.model.js";
+import Song from "../models/song.model.js";
+import Artist from "../models/artist.model.js";
 
 const router = express.Router();
+
+// let test = Song.findAll({ include: Artist }).then((result) => {
+//   console.log("results", result);
+//   console.log("artist!", result[0]);
+// });
 
 router.get("/", (req, res) => {
   res.render("pages/login", { title: "Home Page", message: "" });

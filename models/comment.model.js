@@ -1,5 +1,7 @@
-import sequelize from "./sequelize";
+import sequelize from "./sequelize.js";
 import { DataTypes } from "sequelize";
+import Song from "../models/song.model.js";
+import User from "../models/user.model.js";
 
 const Comment = sequelize.define("comments", {
   id: {
@@ -12,19 +14,10 @@ const Comment = sequelize.define("comments", {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  song_id: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    references: "songs",
-    referencesKey: "id",
-  },
-  author_id: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    references: "users",
-    referencesKey: "id",
-  },
 });
+
+Comment.belongsTo(Song, { foreignKey: { allowNull: false } });
+Comment.belongsTo(User, { foreignKey: { allowNull: false } });
 
 sequelize
   .sync()

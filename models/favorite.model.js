@@ -1,5 +1,7 @@
-import sequelize from "./sequelize";
+import sequelize from "./sequelize.js";
 import { DataTypes } from "sequelize";
+import Song from "../models/song.model.js";
+import User from "../models/user.model.js";
 
 const Favorite = sequelize.define("favorites", {
   id: {
@@ -8,18 +10,11 @@ const Favorite = sequelize.define("favorites", {
     allowNull: false,
     autoIncrement: true,
   },
-  song_id: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    references: "songs",
-    referencesKey: "id",
-  },
-  author_id: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    references: "users",
-    referencesKey: "id",
-  },
+});
+
+Favorite.belongsTo(Song, { foreignKey: { allowNull: false } });
+Favorite.belongsTo(User, {
+  foreignKey: { allowNull: false },
 });
 
 sequelize

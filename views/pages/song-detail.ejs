@@ -1,0 +1,49 @@
+<%- include('../partials/jukebox-header') %>
+<div class="card mb-3">
+  <div class="col">
+    <div class="card h-100">
+      <img
+        src="<%= songs.imageUrl %>"
+        class="card-img-top home-card"
+        alt="..."
+      />
+      <div class="card-body">
+        <h5 class="card-title"><%= songs.title %></h5>
+        <h3><%= songs.artist.name %></h3>
+        <p class="card-text"><%= songs.recommendation %></p>
+
+        <span class="badge text-bg-light"><%= songs.genre %></span>
+        <a class="nav-link" href="<%= songs.link %>">Link</a>
+
+        <button
+          class="btn btn-primary"
+          data-bs-target="#exampleModalToggle"
+          data-bs-toggle="modal"
+        >
+          Play MV
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="exampleModalToggle"
+  aria-hidden="true"
+  aria-labelledby="exampleModalToggleLabel"
+  tabindex="-1"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <iframe
+        width="560"
+        height="315"
+        src="<%= songs.link %>"
+        title="YouTube video player"
+        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+      ></iframe>
+    </div>
+  </div>
+</div>

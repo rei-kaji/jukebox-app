@@ -1,5 +1,6 @@
 import sequelize from "./sequelize.js";
 import { DataTypes } from "sequelize";
+import Artist from "../models/artist.model.js";
 
 const Song = sequelize.define("songs", {
   id: {
@@ -12,15 +13,13 @@ const Song = sequelize.define("songs", {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  description: {
+  recommendation: {
     type: DataTypes.STRING,
     allowNull: false,
   },
   genre: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
-    references: "genres",
-    referencesKey: "id",
   },
   link: {
     type: DataTypes.STRING,
@@ -31,6 +30,8 @@ const Song = sequelize.define("songs", {
     allowNull: true,
   },
 });
+
+Song.belongsTo(Artist, { foreignKey: { allowNull: false } });
 
 sequelize
   .sync()

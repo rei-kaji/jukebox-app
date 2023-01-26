@@ -1,4 +1,4 @@
-<%- include('../partials/header') %>
+<%- include('../partials/jukebox-header') %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -13,19 +13,22 @@
       <% for(let index= 0; index<songs.length; index++) {%> 
         <div class="col">
             <div class="card h-100">
-              <img src="<%= songs[index].imageUrl %>" class="card-img-top" alt="..." />
-              <div class="card-header bg-transparent border-success"><%= songs[index].genre %></div>
+              <img src="<%= songs[index].imageUrl %>" class="card-img-top home-card" alt="..." />
               <div class="card-body">
                   <h5 class="card-title"> <%= songs[index].title %></h5>
-                  <h3></h3>
+                  <h3><%= songs[index].artist.name %></h3>
                   <p class="card-text">
                     <%= songs[index].description %>
                   </p>
+
+                  <span class="badge text-bg-light"><%= songs[index].genre.genre %></span>
                   <a class="nav-link" href="<%= songs[index].link %>">Link</a>
+                  <a href="/song-detail/<%= songs[index].id %>" class="btn btn-info " tabindex="-1" role="button">Detail</a>
               </div>
             </div>
         </div>
       <% } %>
     </div>
+
   </body>
 </html>
