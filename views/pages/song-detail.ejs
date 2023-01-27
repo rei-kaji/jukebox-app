@@ -8,12 +8,12 @@
         alt="..."
       />
       <div class="card-body">
-        <h5 class="card-title"><%= songs.title %></h5>
-        <h3><%= songs.artist.name %></h3>
+        <h2 class="card-title"><%= songs.title %></h2>
+        <span class="badge text-bg-light"><%= songs.genre %></span>
+        <br/><br/>
+        <h5><%= songs.artist.name %></h5>
         <p class="card-text"><%= songs.recommendation %></p>
 
-        <span class="badge text-bg-light"><%= songs.genre %></span>
-        <a class="nav-link" href="<%= songs.link %>">Link</a>
 
         <button
           class="btn btn-primary"
@@ -22,28 +22,84 @@
         >
           Play MV
         </button>
+          <a
+            href="/update-song/<%= songs.id %>"
+            class="btn btn-warning"
+            tabindex="-1"
+            role="button"
+            >Edit Info</a
+          >
       </div>
     </div>
   </div>
 </div>
 
-<div
-  class="modal fade"
-  id="exampleModalToggle"
-  aria-hidden="true"
-  aria-labelledby="exampleModalToggleLabel"
-  tabindex="-1"
->
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <iframe
-        width="560"
-        height="315"
-        src="<%= songs.link %>"
-        title="YouTube video player"
-        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen
-      ></iframe>
+<div class=" mb-3">
+  <table class="table  table-striped table-dark" aria-label="comment table">
+    <thead>
+      <tr>
+        <th>User Comment</th>
+        <th>Author</th>
+      </tr>
+    </thead>
+    <tbody>
+       <% for(let index=0; index<comments.length; index++) {%> 
+      <tr>
+        <td><%= comments[index].comment %></td>
+        <td><%= comments[index].user.username %></td>
+      </tr>
+       <% } %>
+    </tbody>
+  </table>
+</div>
+
+  <!-- ここにコメントとお気に入りを追加する -->
+  <form action="/add-comment/<%= songs.id %>" method="POST">
+    <div class="mb-3">
+      <textarea
+        class="form-control"
+        id="exampleFormControlTextarea1"
+        rows="3"
+        placeholder="Comment"
+        name="comment"
+        required
+      ></textarea>
+    </div>
+    <div class="float-end">
+      <input
+        type="checkbox"
+        class="btn-check"
+        id="btn-favorite"
+        name="favorite"
+        autocomplete="off"
+      />
+      <label class="btn btn-outline-danger btn-favorite" for="btn-favorite"
+        >Favorite</label
+      >
+
+      <button type="submit" class="btn btn-primary float-end">Submit</button>
+    </div>
+  </form>
+
+  <!-- modal window -->
+  <div
+    class="modal fade"
+    id="exampleModalToggle"
+    aria-hidden="true"
+    aria-labelledby="exampleModalToggleLabel"
+    tabindex="-1"
+  >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <iframe
+          width="560"
+          height="315"
+          src="<%= songs.link %>"
+          title="YouTube video player"
+          allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+      </div>
     </div>
   </div>
 </div>

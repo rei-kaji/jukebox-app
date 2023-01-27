@@ -8,23 +8,23 @@
     <title><%= title %></title>
   </head>
   <body>
-    <h1>Welcome our world</h1>
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-      <% for(let index= 0; index<songs.length; index++) {%> 
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+      <% for(let index= 0; index<songs.length; index++) { %> 
         <div class="col">
-            <div class="card h-100">
+            <div class="card">
+             <a href="/song-detail/<%= songs[index].id %>" class="" tabindex="-1" role="button">
               <img src="<%= songs[index].imageUrl %>" class="card-img-top home-card" alt="..." />
               <div class="card-body">
-                  <h5 class="card-title"> <%= songs[index].title %></h5>
-                  <h3><%= songs[index].artist.name %></h3>
+                  <h2 class="card-title"> <%= songs[index].title %></h2>
+                  <h5><%= songs[index].artist.name %></h5>
                   <p class="card-text">
                     <%= songs[index].description %>
                   </p>
 
                   <span class="badge text-bg-light"><%= songs[index].genre.genre %></span>
-                  <a class="nav-link" href="<%= songs[index].link %>">Link</a>
-                  <a href="/song-detail/<%= songs[index].id %>" class="btn btn-info " tabindex="-1" role="button">Detail</a>
+                  
               </div>
+             </a>
             </div>
         </div>
       <% } %>

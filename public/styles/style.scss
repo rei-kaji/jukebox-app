@@ -3,13 +3,33 @@ body {
   background-color: gray;
 }
 
+html {
+  margin-bottom: 2rem;
+}
+
 header {
   margin-bottom: 1rem;
 }
 
-.card {
-  background-color: black;
+table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+a {
+  list-style: none;
+  text-decoration: none;
   color: white;
+}
+
+#navbarNav {
+  justify-content: space-between;
+}
+
+.card {
+  background-color: gray;
+  color: white;
+  border: none;
   // box-shadow: 2px 2px 2px 2px rgb(236, 234, 234);
 
   .card-img-top {
@@ -17,8 +37,8 @@ header {
   }
 
   .home-card {
-    max-height: 20rem;
-    max-width: 20rem;
+    max-height: 30rem;
+    max-width: 30rem;
   }
 
   .detail-card {
@@ -29,4 +49,16 @@ header {
 
 .err {
   color: red;
+}
+
+.btn-favorite,
+.btn-logout {
+  margin-right: 1rem;
+}
+
+.favorite-song-title {
+  text-align: center;
+  color: white;
+  font-size: 2rem;
+  margin: 0 auto;
 }

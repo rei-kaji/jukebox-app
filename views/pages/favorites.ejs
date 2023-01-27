@@ -1,0 +1,34 @@
+<%- include('../partials/jukebox-header') %>
+
+<div class="mb-3">
+  <table class="table table-striped table-dark" aria-label="favorite table">
+    <thead>
+      <tr>
+        <th style="width: 70%">Title</th>
+        <th style="width: 30%">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for(let favorite of favorites){ %>
+      <tr>
+        <td>
+          <a
+            href="/song-detail/<%= favorite.song.id%>"
+            class="favorite-song-title"
+            ><%= favorite.song.title%></a
+          >
+        </td>
+        <td>
+          <a
+            href="/delete-favorite/<%= favorite.id%>"
+            class="btn btn-info"
+            tabindex="-1"
+            role="button"
+            >Remove</a
+          >
+        </td>
+      </tr>
+      <% } %>
+    </tbody>
+  </table>
+</div>

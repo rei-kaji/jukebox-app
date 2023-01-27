@@ -1,28 +1,17 @@
 import express from "express";
 import User from "../models/user.model.js";
-import Song from "../models/song.model.js";
-import Artist from "../models/artist.model.js";
 
 const router = express.Router();
 
-// let test = Song.findAll({ include: Artist }).then((result) => {
-//   console.log("results", result);
-//   console.log("artist!", result[0]);
-// });
-
 router.get("/", (req, res) => {
-  res.render("pages/login", { title: "Home Page", message: "" });
+  if (req.session) {
+    res.redirect("/home");
+  }
+  res.render("pages/login", {
+    title: "Home Page",
+    message: "",
+  });
 });
-
-// router.get("/index", (req, res) => {
-//   User.findAll()
-//     .then((users) => {
-//       res.render("pages/index", { users: users, title: "Home Page" });
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     });
-// });
 
 router.get("/login", (req, res) => {
   res.render("pages/login", { title: "Login", message: "" });
@@ -33,7 +22,6 @@ router.get("/register", (req, res) => {
 });
 
 router.post("/login", (req, res) => {
-  // SELECT * from users WHERE email = req.body.email AND password = req.body.password
   User.findOne({
     where: {
       email: req.body.email,
@@ -48,7 +36,11 @@ router.post("/login", (req, res) => {
           message: "Invalid email or password",
           title: "Login",
         });
-      res.render("pages/index", { user: user, title: "Home Page" });
+      let userId = user.toJSON().id;
+      req.session.userId = userId;
+
+      console.log(req.session.userId);
+      res.redirect("/home");
     })
     .catch((err) => {
       console.log(err);
@@ -56,7 +48,6 @@ router.post("/login", (req, res) => {
 });
 
 router.post("/register", (req, res) => {
-  // SELECT * from users WHERE email = req.body.email
   User.findOne({
     where: {
       email: req.body.email,
@@ -91,6 +82,12 @@ router.post("/register", (req, res) => {
     .catch((err) => {
       console.log(err);
     });
+});
+
+router.get("/logout", (req, res) => {
+  req.session.destroy();
+
+  res.redirect("/");
 });
 
 export default router;
