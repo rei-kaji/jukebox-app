@@ -212,11 +212,12 @@ router.get("/favorites", (req, res) => {
   );
 });
 
-router.get("/delete-favorite/:id", (req, res) => {
+router.post("/delete-favorite/:id", (req, res) => {
   userIdSession = req.session.userId;
   if (!userIdSession) {
     res.redirect("/login");
   }
+
   Favorite.destroy({
     where: { userId: userIdSession, songId: req.params.id },
   }).then(() => {

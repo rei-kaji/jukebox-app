@@ -19,13 +19,9 @@
           >
         </td>
         <td>
-          <a
-            href="/delete-favorite/<%= favorite.id%>"
-            class="btn btn-info"
-            tabindex="-1"
-            role="button"
-            >Remove</a
-          >
+          <form action="/delete-favorite/<%= favorite.song.id%>" method="POST">
+            <button type="submit" class="btn btn-primary">Remove</button>
+          </form>
         </td>
       </tr>
       <% } %>
